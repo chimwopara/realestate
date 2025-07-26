@@ -1,0 +1,435 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Velora Group</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #0e1723;
+            color: #E5E5E5;
+        }
+        .bg-hero {
+            background-image: url('photo1.png');
+            background-size: cover;
+            background-position: center;
+            /* Added for scroll-zoom effect */
+            will-change: transform; 
+            transition: transform 0.2s ease-out;
+        }
+        .card-glow {
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05), 0 0 30px rgba(255, 255, 255, 0.03);
+        }
+        
+        /* Eclipse lighting effect */
+        .eclipse-glow {
+            position: relative;
+            box-shadow: 
+                0 15px 35px rgba(199, 162, 80, 0.3),
+                0 25px 60px rgba(199, 162, 80, 0.2),
+                0 35px 80px rgba(199, 162, 80, 0.1),
+                inset 0 -2px 8px rgba(199, 162, 80, 0.15);
+        }
+        
+        .eclipse-glow::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 40px;
+            background: radial-gradient(ellipse at center, 
+                rgba(199, 162, 80, 0.4) 0%, 
+                rgba(199, 162, 80, 0.2) 30%, 
+                rgba(199, 162, 80, 0.1) 60%, 
+                transparent 100%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(8px);
+        }
+        
+        /* Enhanced eclipse effect for hero card */
+        .hero-eclipse {
+            box-shadow: 
+                0 20px 40px rgba(199, 162, 80, 0.4),
+                0 30px 70px rgba(199, 162, 80, 0.25),
+                0 40px 90px rgba(199, 162, 80, 0.15),
+                inset 0 -3px 12px rgba(199, 162, 80, 0.2);
+        }
+        
+        .hero-eclipse::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 130%;
+            height: 50px;
+            background: radial-gradient(ellipse at center, 
+                rgba(199, 162, 80, 0.5) 0%, 
+                rgba(199, 162, 80, 0.3) 30%, 
+                rgba(199, 162, 80, 0.15) 60%, 
+                transparent 100%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(12px);
+        }
+        
+        /* Pillar cards eclipse effect */
+        .pillar-eclipse {
+            position: relative;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            background: rgba(20, 32, 46, 0.8);
+            box-shadow: 
+                0 12px 30px rgba(199, 162, 80, 0.25),
+                0 20px 50px rgba(199, 162, 80, 0.15),
+                0 30px 70px rgba(199, 162, 80, 0.08),
+                inset 0 -2px 6px rgba(199, 162, 80, 0.12);
+        }
+        
+        .pillar-eclipse::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 110%;
+            height: 35px;
+            background: radial-gradient(ellipse at center, 
+                rgba(199, 162, 80, 0.35) 0%, 
+                rgba(199, 162, 80, 0.2) 35%, 
+                rgba(199, 162, 80, 0.08) 65%, 
+                transparent 100%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(6px);
+        }
+        
+        /* Management section eclipse */
+        .management-eclipse {
+            position: relative;
+            padding: 3rem 2rem;
+            background: rgba(20, 32, 46, 0.6);
+            border-radius: 1rem;
+            box-shadow: 
+                0 18px 35px rgba(199, 162, 80, 0.3),
+                0 25px 60px rgba(199, 162, 80, 0.2),
+                0 35px 80px rgba(199, 162, 80, 0.1),
+                inset 0 -2px 8px rgba(199, 162, 80, 0.15);
+        }
+        
+        .management-eclipse::before {
+            content: '';
+            position: absolute;
+            top: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120%;
+            height: 45px;
+            background: radial-gradient(ellipse at center, 
+                rgba(199, 162, 80, 0.4) 0%, 
+                rgba(199, 162, 80, 0.25) 30%, 
+                rgba(199, 162, 80, 0.12) 60%, 
+                transparent 100%);
+            border-radius: 50%;
+            z-index: -1;
+            filter: blur(10px);
+        }
+        
+        .btn-transition {
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            box-shadow: 0 4px 15px rgba(199, 162, 80, 0.2);
+        }
+        .btn-transition:hover {
+            transform: translateY(-2px);
+            box-shadow: 
+                0 6px 25px rgba(199, 162, 80, 0.3),
+                0 4px 20px rgba(0, 0, 0, 0.2);
+        }
+        .nav-link {
+            transition: color 0.3s ease;
+            position: relative;
+        }
+        .nav-link:hover {
+            color: #FFFFFF;
+        }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            width: 0;
+            height: 1px;
+            bottom: -4px;
+            left: 50%;
+            transform: translateX(-50%);
+            background-color: #c7a250;
+            transition: width 0.3s ease;
+        }
+        .nav-link:hover::after {
+            width: 100%;
+        }
+        .section-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        .section-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        /* Styles for hero card transition */
+        .hero-card {
+            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease-out;
+        }
+        /* Updated hover effect for direct hover/touch */
+        .hero-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 
+                0 25px 50px rgba(199, 162, 80, 0.4),
+                0 35px 70px rgba(199, 162, 80, 0.3),
+                0 45px 90px rgba(199, 162, 80, 0.2);
+        }
+        
+        /* Image hover effects with eclipse glow */
+        .image-eclipse {
+            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        }
+        
+        .image-eclipse:hover {
+            transform: scale(1.05);
+            box-shadow: 
+                0 15px 35px rgba(199, 162, 80, 0.3),
+                0 25px 60px rgba(199, 162, 80, 0.2);
+        }
+    </style>
+</head>
+<body class="overflow-x-hidden">
+
+    <!-- Header & Hero Section -->
+    <header id="main-header" class="relative min-h-screen flex flex-col">
+        <!-- Background Image -->
+        <div class="absolute inset-0 bg-hero z-0"></div>
+        <div class="absolute inset-0 bg-[#0e1723]/60 z-10"></div>
+
+        <!-- Navigation -->
+        <nav class="relative z-20 w-full px-6 sm:px-12 py-6">
+            <div class="container mx-auto flex flex-col items-center gap-6">
+                <!-- Logo -->
+                <a href="#">
+                    <img src="logo.png" alt="Velora Group Logo" class="h-16 md:h-20" onerror="this.onerror=null;this.src='https://placehold.co/240x80/0e1723/FFFFFF?text=Velora+Group';">
+                </a>
+
+                <!-- Desktop Menu -->
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#investor" class="text-gray-300 nav-link">Investor</a>
+                    <a href="#about" class="text-gray-300 nav-link">About</a>
+                    <a href="#contact" class="text-gray-300 nav-link">Contact</a>
+                    <a href="#management" class="text-gray-300 nav-link">Management</a>
+                </div>
+            </div>
+            
+            <!-- Social Icon & Mobile Menu Button (Absolutely Positioned) -->
+            <div class="absolute top-6 right-6 sm:right-12 flex items-center gap-4">
+                 <a href="https://www.instagram.com" target="_blank" class="hidden sm:block text-gray-300 hover:text-white transition-colors">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                </a>
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
+                </button>
+            </div>
+        </nav>
+        
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e1723]/95 z-30 flex flex-col items-center justify-center space-y-8">
+             <button id="close-mobile-menu" class="absolute top-8 right-8 text-gray-300 focus:outline-none">
+                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </button>
+            <a href="#investor" class="text-gray-300 text-2xl nav-link mobile-nav-link">Investor</a>
+            <a href="#about" class="text-gray-300 text-2xl nav-link mobile-nav-link">About</a>
+            <a href="#contact" class="text-gray-300 text-2xl nav-link mobile-nav-link">Contact</a>
+            <a href="#management" class="text-gray-300 text-2xl nav-link mobile-nav-link">Management</a>
+        </div>
+
+        <!-- Hero Content -->
+        <div class="relative z-20 flex-grow flex items-center justify-center sm:justify-start px-6 sm:px-12">
+            <div class="container mx-auto">
+                <div id="hero-card" class="bg-[#0e1723]/70 p-8 md:p-12 rounded-lg max-w-xl backdrop-blur-sm hero-card hero-eclipse">
+                    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-300">Featured Project</h2>
+                    <h1 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-4">Austin House</h1>
+                    <p class="text-gray-300 leading-relaxed mb-8">Take a look at our most recent project, located in the heart of Edmonton at 9928 89 Avenue, Edmonton, AB.</p>
+                    <a href="#about" class="bg-gray-200 text-black font-bold py-3 px-8 rounded-lg inline-block btn-transition hover:bg-white">Learn More</a>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <!-- Pillars Section -->
+        <section class="bg-[#14202e] py-20 sm:py-28 section-fade-in">
+            <div class="container mx-auto px-6 sm:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+                    <div class="pillar-eclipse">
+                        <h3 class="text-2xl font-bold text-white mb-4">Invest</h3>
+                        <p class="text-gray-400 leading-relaxed">Optimized for modern living, our properties are guaranteed to effortlessly integrate themselves into your daily life and investment portfolio.</p>
+                    </div>
+                    <div class="pillar-eclipse">
+                        <h3 class="text-2xl font-bold text-white mb-4">Innovate</h3>
+                        <p class="text-gray-400 leading-relaxed">Cutting-edge and award-garde, we pride ourselves on paving the way for others and creating timeless masterpieces of architecture.</p>
+                    </div>
+                    <div class="pillar-eclipse">
+                        <h3 class="text-2xl font-bold text-white mb-4">Inspire</h3>
+                        <p class="text-gray-400 leading-relaxed">A home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Vision Section -->
+        <section id="about" class="py-20 sm:py-28 section-fade-in">
+            <div class="container mx-auto px-6 sm:px-12">
+                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
+                    <div class="w-full md:w-1/2">
+                         <div class="bg-[#0e1723]/30 p-8 md:p-12 rounded-lg eclipse-glow">
+                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">The Velora Vision.</h2>
+                            <p class="text-gray-300 leading-relaxed mb-4">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
+                             <p class="text-gray-300 leading-relaxed mb-8">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
+                            <a href="#contact" class="bg-gray-200 text-black font-bold py-3 px-8 rounded-lg inline-block btn-transition hover:bg-white">Explore</a>
+                        </div>
+                    </div>
+                    <div class="w-full md:w-1/2">
+                        <img src="photo2.png" alt="Modern living room" class="rounded-lg shadow-2xl w-full image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/600x400/333333/FFFFFF?text=Velora+Vision';">
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Journey Section -->
+        <section class="py-20 sm:py-28 bg-[#14202e] section-fade-in">
+            <div class="container mx-auto px-6 sm:px-12">
+                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Follow our journey.</h2>
+                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="group overflow-hidden rounded-lg">
+                        <img src="photo3.png" alt="Architectural detail" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+1';">
+                    </div>
+                     <div class="group overflow-hidden rounded-lg">
+                        <img src="photo4.png" alt="Interior design shot" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+2';">
+                    </div>
+                     <div class="group overflow-hidden rounded-lg">
+                        <img src="photo5.png" alt="Exterior home view" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+3';">
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Management Section -->
+        <section id="management" class="py-20 sm:py-28 section-fade-in">
+            <div class="container mx-auto px-6 sm:px-12">
+                <div class="management-eclipse text-center">
+                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Management</h2>
+                    <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed mb-12">Our leadership team, guided by founder Tosin, brings decades of combined experience in real estate development, design, and construction. We are dedicated to delivering projects that not only meet but exceed expectations, setting new benchmarks for quality and craftsmanship in Edmonton.</p>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- Footer -->
+    <footer id="contact" class="bg-[#0e1723] py-16">
+        <div class="container mx-auto px-6 sm:px-12">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+                <!-- About -->
+                <div class="md:col-span-2">
+                    <a href="#">
+                       <img src="logo.png" alt="Velora Group Logo" class="h-16 mb-4" onerror="this.onerror=null;this.src='https://placehold.co/240x64/0e1723/FFFFFF?text=Velora+Group';">
+                    </a>
+                    <p class="text-gray-500 max-w-md">Velora Group is an Edmonton-based homebuilder focused on producing top-quality, immersive homes for Edmonton & surrounding areas.</p>
+                </div>
+
+                <!-- Contact -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Contact us</h4>
+                    <ul class="space-y-2 text-gray-400">
+                        <li><a href="tel:+15875550199" class="hover:text-white transition-colors">(587) 555-0199</a></li>
+                        <li><p>Edmonton, Alberta</p></li>
+                    </ul>
+                </div>
+
+                <!-- Connect -->
+                <div>
+                    <h4 class="font-bold text-white mb-4">Connect with us</h4>
+                     <ul class="space-y-2 text-gray-400">
+                        <li><a href="https://www.instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                    </ul>
+                </div>
+            </div>
+            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-gray-600 text-sm">
+                <p>&copy; 2025 Velora Group. All Rights Reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            // Mobile Menu Toggle
+            const mobileMenuButton = document.getElementById('mobile-menu-button');
+            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
+            const mobileMenu = document.getElementById('mobile-menu');
+            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
+
+            mobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.remove('hidden');
+                document.body.style.overflow = 'hidden';
+            });
+
+            closeMobileMenuButton.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+                document.body.style.overflow = '';
+            });
+            
+            mobileNavLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    mobileMenu.classList.add('hidden');
+                    document.body.style.overflow = '';
+                });
+            });
+
+            // Scroll Animations for sections
+            const sections = document.querySelectorAll('.section-fade-in');
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.1
+            });
+
+            sections.forEach(section => {
+                observer.observe(section);
+            });
+
+            // Scroll Zoom Effect for Hero Background
+            const heroBg = document.querySelector('.bg-hero');
+            if (heroBg) {
+                window.addEventListener('scroll', () => {
+                    const scrollY = window.scrollY;
+                    // Adjust the divisor to control zoom speed. A smaller number means faster zoom.
+                    const scale = 1 + scrollY / 1500;
+                    // Cap the scale to prevent it from getting too large
+                    const cappedScale = Math.min(scale, 1.5);
+                    heroBg.style.transform = `scale(${cappedScale})`;
+                }, { passive: true }); // Improve scroll performance
+            }
+        });
+    </script>
+
+</body>
+</html>
