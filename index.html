@@ -35,6 +35,16 @@
             background-attachment: fixed;
             will-change: transform; 
             transition: transform 0.2s ease-out;
+            position: relative; /* Ensure positioning context for pseudo-element */
+        }
+
+        /* FIX: Added a pseudo-element for the overlay */
+        /* This combines the background and overlay into one unit to prevent loading flicker. */
+        .bg-hero::before {
+            content: '';
+            position: absolute;
+            inset: 0; /* Covers the entire parent element */
+            background-color: rgb(14 23 35 / 0.7); /* This is the same as bg-[#0e1723]/70 */
         }
         
         @media (max-width: 768px) {
@@ -420,8 +430,8 @@
     <!-- Header & Hero Section -->
     <header id="main-header" class="relative min-h-screen flex flex-col">
         <!-- Background Image with Overlay -->
+        <!-- FIX: Removed the separate overlay div and applied it via CSS pseudo-element to bg-hero -->
         <div class="absolute inset-0 bg-hero z-0"></div>
-        <div class="absolute inset-0 bg-[#0e1723]/70 z-10"></div>
 
         <!-- Navigation -->
         <nav class="relative z-20 w-full py-4 sm:py-6">
