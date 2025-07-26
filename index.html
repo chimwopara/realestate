@@ -26,13 +26,13 @@
             box-shadow: 0 0 15px rgba(255, 255, 255, 0.05), 0 0 30px rgba(255, 255, 255, 0.03);
         }
         
-        /* Eclipse lighting effect */
+        /* Eclipse lighting effect - Mobile Optimized */
         .eclipse-glow {
             position: relative;
             box-shadow: 
-                0 15px 35px rgba(199, 162, 80, 0.3),
-                0 25px 60px rgba(199, 162, 80, 0.2),
-                0 35px 80px rgba(199, 162, 80, 0.1),
+                0 8px 25px rgba(199, 162, 80, 0.3),
+                0 15px 40px rgba(199, 162, 80, 0.2),
+                0 25px 60px rgba(199, 162, 80, 0.1),
                 inset 0 -2px 8px rgba(199, 162, 80, 0.15);
         }
         
@@ -42,8 +42,8 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            width: 120%;
-            height: 40px;
+            width: 110%;
+            height: 25px;
             background: radial-gradient(ellipse at center, 
                 rgba(199, 162, 80, 0.4) 0%, 
                 rgba(199, 162, 80, 0.2) 30%, 
@@ -51,16 +51,16 @@
                 transparent 100%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(8px);
+            filter: blur(6px);
         }
         
-        /* Enhanced eclipse effect for hero card */
+        /* Enhanced eclipse effect for hero card - Mobile Optimized */
         .hero-eclipse {
             box-shadow: 
-                0 20px 40px rgba(199, 162, 80, 0.4),
-                0 30px 70px rgba(199, 162, 80, 0.25),
-                0 40px 90px rgba(199, 162, 80, 0.15),
-                inset 0 -3px 12px rgba(199, 162, 80, 0.2);
+                0 12px 30px rgba(199, 162, 80, 0.4),
+                0 20px 50px rgba(199, 162, 80, 0.25),
+                0 30px 70px rgba(199, 162, 80, 0.15),
+                inset 0 -2px 10px rgba(199, 162, 80, 0.2);
         }
         
         .hero-eclipse::before {
@@ -69,8 +69,8 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            width: 130%;
-            height: 50px;
+            width: 120%;
+            height: 35px;
             background: radial-gradient(ellipse at center, 
                 rgba(199, 162, 80, 0.5) 0%, 
                 rgba(199, 162, 80, 0.3) 30%, 
@@ -78,19 +78,20 @@
                 transparent 100%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(12px);
+            filter: blur(8px);
         }
         
-        /* Pillar cards eclipse effect */
+        /* Pillar cards eclipse effect - Mobile Responsive */
         .pillar-eclipse {
             position: relative;
-            padding: 2rem;
-            border-radius: 0.5rem;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
             background: rgba(20, 32, 46, 0.8);
+            margin-bottom: 1rem;
             box-shadow: 
-                0 12px 30px rgba(199, 162, 80, 0.25),
-                0 20px 50px rgba(199, 162, 80, 0.15),
-                0 30px 70px rgba(199, 162, 80, 0.08),
+                0 8px 20px rgba(199, 162, 80, 0.25),
+                0 15px 35px rgba(199, 162, 80, 0.15),
+                0 25px 50px rgba(199, 162, 80, 0.08),
                 inset 0 -2px 6px rgba(199, 162, 80, 0.12);
         }
         
@@ -100,8 +101,8 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            width: 110%;
-            height: 35px;
+            width: 105%;
+            height: 25px;
             background: radial-gradient(ellipse at center, 
                 rgba(199, 162, 80, 0.35) 0%, 
                 rgba(199, 162, 80, 0.2) 35%, 
@@ -109,19 +110,19 @@
                 transparent 100%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(6px);
+            filter: blur(4px);
         }
         
-        /* Management section eclipse */
+        /* Management section eclipse - Mobile Optimized */
         .management-eclipse {
             position: relative;
-            padding: 3rem 2rem;
+            padding: 2rem 1.5rem;
             background: rgba(20, 32, 46, 0.6);
             border-radius: 1rem;
             box-shadow: 
-                0 18px 35px rgba(199, 162, 80, 0.3),
-                0 25px 60px rgba(199, 162, 80, 0.2),
-                0 35px 80px rgba(199, 162, 80, 0.1),
+                0 12px 25px rgba(199, 162, 80, 0.3),
+                0 20px 45px rgba(199, 162, 80, 0.2),
+                0 30px 60px rgba(199, 162, 80, 0.1),
                 inset 0 -2px 8px rgba(199, 162, 80, 0.15);
         }
         
@@ -131,8 +132,8 @@
             top: 100%;
             left: 50%;
             transform: translateX(-50%);
-            width: 120%;
-            height: 45px;
+            width: 110%;
+            height: 35px;
             background: radial-gradient(ellipse at center, 
                 rgba(199, 162, 80, 0.4) 0%, 
                 rgba(199, 162, 80, 0.25) 30%, 
@@ -140,12 +141,44 @@
                 transparent 100%);
             border-radius: 50%;
             z-index: -1;
-            filter: blur(10px);
+            filter: blur(8px);
+        }
+        
+        /* Mobile-specific adjustments */
+        @media (max-width: 768px) {
+            .eclipse-glow::before,
+            .hero-eclipse::before,
+            .pillar-eclipse::before,
+            .management-eclipse::before {
+                height: 20px;
+                filter: blur(4px);
+            }
+            
+            .pillar-eclipse {
+                padding: 1.25rem;
+                margin-bottom: 0.75rem;
+            }
+            
+            .management-eclipse {
+                padding: 1.5rem 1rem;
+            }
+            
+            .hero-eclipse {
+                box-shadow: 
+                    0 8px 20px rgba(199, 162, 80, 0.35),
+                    0 15px 35px rgba(199, 162, 80, 0.2),
+                    0 20px 50px rgba(199, 162, 80, 0.12),
+                    inset 0 -1px 6px rgba(199, 162, 80, 0.15);
+            }
         }
         
         .btn-transition {
             transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
             box-shadow: 0 4px 15px rgba(199, 162, 80, 0.2);
+            min-height: 48px; /* Improved touch target */
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
         }
         .btn-transition:hover {
             transform: translateY(-2px);
@@ -153,9 +186,27 @@
                 0 6px 25px rgba(199, 162, 80, 0.3),
                 0 4px 20px rgba(0, 0, 0, 0.2);
         }
+        
+        /* Mobile-specific button adjustments */
+        @media (max-width: 768px) {
+            .btn-transition {
+                padding: 12px 24px;
+                font-size: 16px;
+                min-height: 52px;
+                width: 100%;
+                max-width: 200px;
+            }
+            .btn-transition:hover {
+                transform: translateY(-1px);
+            }
+        }
+        
         .nav-link {
             transition: color 0.3s ease;
             position: relative;
+            min-height: 44px; /* Better touch target */
+            display: flex;
+            align-items: center;
         }
         .nav-link:hover {
             color: #FFFFFF;
@@ -164,7 +215,7 @@
             content: '';
             position: absolute;
             width: 0;
-            height: 1px;
+            height: 2px;
             bottom: -4px;
             left: 50%;
             transform: translateX(-50%);
@@ -174,6 +225,16 @@
         .nav-link:hover::after {
             width: 100%;
         }
+        
+        /* Mobile navigation improvements */
+        @media (max-width: 768px) {
+            .nav-link {
+                padding: 12px 0;
+                font-size: 18px;
+                min-height: 48px;
+            }
+        }
+        
         .section-fade-in {
             opacity: 0;
             transform: translateY(20px);
@@ -183,29 +244,82 @@
             opacity: 1;
             transform: translateY(0);
         }
-        /* Styles for hero card transition */
+        
+        /* Styles for hero card transition - Mobile Optimized */
         .hero-card {
             transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease-out;
         }
-        /* Updated hover effect for direct hover/touch */
         .hero-card:hover {
-            transform: translateY(-10px);
+            transform: translateY(-8px);
             box-shadow: 
-                0 25px 50px rgba(199, 162, 80, 0.4),
-                0 35px 70px rgba(199, 162, 80, 0.3),
-                0 45px 90px rgba(199, 162, 80, 0.2);
+                0 20px 40px rgba(199, 162, 80, 0.4),
+                0 30px 60px rgba(199, 162, 80, 0.3),
+                0 40px 80px rgba(199, 162, 80, 0.2);
         }
         
-        /* Image hover effects with eclipse glow */
+        /* Mobile hero card adjustments */
+        @media (max-width: 768px) {
+            .hero-card:hover {
+                transform: translateY(-4px);
+                box-shadow: 
+                    0 12px 25px rgba(199, 162, 80, 0.35),
+                    0 20px 40px rgba(199, 162, 80, 0.25),
+                    0 30px 60px rgba(199, 162, 80, 0.15);
+            }
+        }
+        
+        /* Image hover effects with eclipse glow - Mobile Responsive */
         .image-eclipse {
             transition: transform 0.5s ease, box-shadow 0.5s ease;
         }
         
         .image-eclipse:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
             box-shadow: 
-                0 15px 35px rgba(199, 162, 80, 0.3),
-                0 25px 60px rgba(199, 162, 80, 0.2);
+                0 12px 25px rgba(199, 162, 80, 0.3),
+                0 20px 45px rgba(199, 162, 80, 0.2);
+        }
+        
+        /* Mobile image adjustments */
+        @media (max-width: 768px) {
+            .image-eclipse:hover {
+                transform: scale(1.02);
+                box-shadow: 
+                    0 8px 20px rgba(199, 162, 80, 0.25),
+                    0 15px 35px rgba(199, 162, 80, 0.15);
+            }
+        }
+        
+        /* Mobile typography improvements */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem !important;
+                line-height: 1.2;
+            }
+            h2 {
+                font-size: 2rem !important;
+                line-height: 1.3;
+            }
+            h3 {
+                font-size: 1.5rem !important;
+                line-height: 1.4;
+            }
+            p {
+                font-size: 16px;
+                line-height: 1.6;
+            }
+        }
+        
+        /* Mobile spacing improvements */
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 1rem;
+                padding-right: 1rem;
+            }
+            section {
+                padding-top: 3rem !important;
+                padding-bottom: 3rem !important;
+            }
         }
     </style>
 </head>
@@ -218,52 +332,57 @@
         <div class="absolute inset-0 bg-[#0e1723]/60 z-10"></div>
 
         <!-- Navigation -->
-        <nav class="relative z-20 w-full px-6 sm:px-12 py-6">
-            <div class="container mx-auto flex flex-col items-center gap-6">
+        <nav class="relative z-20 w-full px-4 sm:px-6 lg:px-12 py-4 sm:py-6">
+            <div class="container mx-auto flex flex-col items-center gap-4 sm:gap-6">
                 <!-- Logo -->
-                <a href="#">
-                    <img src="logo.png" alt="Velora Group Logo" class="h-16 md:h-20" onerror="this.onerror=null;this.src='https://placehold.co/240x80/0e1723/FFFFFF?text=Velora+Group';">
+                <a href="#" class="flex-shrink-0">
+                    <img src="logo.png" alt="Velora Group Logo" class="h-12 sm:h-16 lg:h-20" onerror="this.onerror=null;this.src='https://placehold.co/240x80/0e1723/FFFFFF?text=Velora+Group';">
                 </a>
 
                 <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-8">
-                    <a href="#investor" class="text-gray-300 nav-link">Investor</a>
-                    <a href="#about" class="text-gray-300 nav-link">About</a>
-                    <a href="#contact" class="text-gray-300 nav-link">Contact</a>
-                    <a href="#management" class="text-gray-300 nav-link">Management</a>
+                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
+                    <a href="#investor" class="text-gray-300 nav-link text-sm lg:text-base">Investor</a>
+                    <a href="#about" class="text-gray-300 nav-link text-sm lg:text-base">About</a>
+                    <a href="#contact" class="text-gray-300 nav-link text-sm lg:text-base">Contact</a>
+                    <a href="#management" class="text-gray-300 nav-link text-sm lg:text-base">Management</a>
                 </div>
             </div>
             
             <!-- Social Icon & Mobile Menu Button (Absolutely Positioned) -->
-            <div class="absolute top-6 right-6 sm:right-12 flex items-center gap-4">
-                 <a href="https://www.instagram.com" target="_blank" class="hidden sm:block text-gray-300 hover:text-white transition-colors">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+            <div class="absolute top-4 sm:top-6 right-4 sm:right-6 lg:right-12 flex items-center gap-3 sm:gap-4">
+                 <a href="https://www.instagram.com" target="_blank" class="hidden sm:block text-gray-300 hover:text-white transition-colors p-2">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" sm:width="24" sm:height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
                 </a>
-                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none">
+                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none p-2 touch-manipulation">
                     <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
                 </button>
             </div>
         </nav>
         
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e1723]/95 z-30 flex flex-col items-center justify-center space-y-8">
-             <button id="close-mobile-menu" class="absolute top-8 right-8 text-gray-300 focus:outline-none">
-                <svg class="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e1723]/95 z-30 flex flex-col items-center justify-center space-y-6 sm:space-y-8">
+             <button id="close-mobile-menu" class="absolute top-6 sm:top-8 right-6 sm:right-8 text-gray-300 focus:outline-none p-2 touch-manipulation">
+                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
             </button>
-            <a href="#investor" class="text-gray-300 text-2xl nav-link mobile-nav-link">Investor</a>
-            <a href="#about" class="text-gray-300 text-2xl nav-link mobile-nav-link">About</a>
-            <a href="#contact" class="text-gray-300 text-2xl nav-link mobile-nav-link">Contact</a>
-            <a href="#management" class="text-gray-300 text-2xl nav-link mobile-nav-link">Management</a>
+            <a href="#investor" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Investor</a>
+            <a href="#about" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">About</a>
+            <a href="#contact" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Contact</a>
+            <a href="#management" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Management</a>
+            <!-- Mobile Instagram Link -->
+            <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-white transition-colors mt-4 flex items-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                <span class="text-lg">Instagram</span>
+            </a>
         </div>
 
         <!-- Hero Content -->
-        <div class="relative z-20 flex-grow flex items-center justify-center sm:justify-start px-6 sm:px-12">
+        <div class="relative z-20 flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-12 py-8">
             <div class="container mx-auto">
-                <div id="hero-card" class="bg-[#0e1723]/70 p-8 md:p-12 rounded-lg max-w-xl backdrop-blur-sm hero-card hero-eclipse">
-                    <h2 class="text-sm font-semibold uppercase tracking-widest text-gray-300">Featured Project</h2>
-                    <h1 class="text-4xl md:text-5xl font-bold text-white mt-4 mb-4">Austin House</h1>
-                    <p class="text-gray-300 leading-relaxed mb-8">Take a look at our most recent project, located in the heart of Edmonton at 9928 89 Avenue, Edmonton, AB.</p>
-                    <a href="#about" class="bg-gray-200 text-black font-bold py-3 px-8 rounded-lg inline-block btn-transition hover:bg-white">Learn More</a>
+                <div id="hero-card" class="bg-[#0e1723]/70 p-6 sm:p-8 md:p-12 rounded-xl max-w-lg sm:max-w-xl backdrop-blur-sm hero-card hero-eclipse mx-auto sm:mx-0">
+                    <h2 class="text-xs sm:text-sm font-semibold uppercase tracking-widest text-gray-300 mb-2">Featured Project</h2>
+                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 leading-tight">Austin House</h1>
+                    <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">Take a look at our most recent project, located in the heart of Edmonton at 9928 89 Avenue, Edmonton, AB.</p>
+                    <a href="#about" class="bg-gray-200 text-black font-bold py-3 px-6 sm:px-8 rounded-lg inline-block btn-transition hover:bg-white text-sm sm:text-base">Learn More</a>
                 </div>
             </div>
         </div>
@@ -271,39 +390,39 @@
 
     <main>
         <!-- Pillars Section -->
-        <section class="bg-[#14202e] py-20 sm:py-28 section-fade-in">
-            <div class="container mx-auto px-6 sm:px-12">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 text-center">
+        <section class="bg-[#14202e] py-12 sm:py-16 lg:py-20 section-fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 text-center">
                     <div class="pillar-eclipse">
-                        <h3 class="text-2xl font-bold text-white mb-4">Invest</h3>
-                        <p class="text-gray-400 leading-relaxed">Optimized for modern living, our properties are guaranteed to effortlessly integrate themselves into your daily life and investment portfolio.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Invest</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Optimized for modern living, our properties are guaranteed to effortlessly integrate themselves into your daily life and investment portfolio.</p>
                     </div>
                     <div class="pillar-eclipse">
-                        <h3 class="text-2xl font-bold text-white mb-4">Innovate</h3>
-                        <p class="text-gray-400 leading-relaxed">Cutting-edge and award-garde, we pride ourselves on paving the way for others and creating timeless masterpieces of architecture.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Innovate</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Cutting-edge and award-garde, we pride ourselves on paving the way for others and creating timeless masterpieces of architecture.</p>
                     </div>
                     <div class="pillar-eclipse">
-                        <h3 class="text-2xl font-bold text-white mb-4">Inspire</h3>
-                        <p class="text-gray-400 leading-relaxed">A home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs.</p>
+                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Inspire</h3>
+                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">A home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs.</p>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Vision Section -->
-        <section id="about" class="py-20 sm:py-28 section-fade-in">
-            <div class="container mx-auto px-6 sm:px-12">
-                <div class="flex flex-col md:flex-row items-center gap-12 md:gap-16">
-                    <div class="w-full md:w-1/2">
-                         <div class="bg-[#0e1723]/30 p-8 md:p-12 rounded-lg eclipse-glow">
-                            <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">The Velora Vision.</h2>
-                            <p class="text-gray-300 leading-relaxed mb-4">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
-                             <p class="text-gray-300 leading-relaxed mb-8">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
-                            <a href="#contact" class="bg-gray-200 text-black font-bold py-3 px-8 rounded-lg inline-block btn-transition hover:bg-white">Explore</a>
+        <section id="about" class="py-12 sm:py-16 lg:py-20 section-fade-in">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+                <div class="flex flex-col md:flex-row items-center gap-8 sm:gap-12 lg:gap-16">
+                    <div class="w-full md:w-1/2 order-2 md:order-1">
+                         <div class="bg-[#0e1723]/30 p-6 sm:p-8 lg:p-12 rounded-xl eclipse-glow">
+                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">The Velora Vision.</h2>
+                            <p class="text-gray-300 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-base">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
+                             <p class="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
+                            <a href="#contact" class="bg-gray-200 text-black font-bold py-3 px-6 sm:px-8 rounded-lg inline-block btn-transition hover:bg-white text-sm sm:text-base">Explore</a>
                         </div>
                     </div>
-                    <div class="w-full md:w-1/2">
-                        <img src="photo2.png" alt="Modern living room" class="rounded-lg shadow-2xl w-full image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/600x400/333333/FFFFFF?text=Velora+Vision';">
+                    <div class="w-full md:w-1/2 order-1 md:order-2">
+                        <img src="photo2.png" alt="Modern living room" class="rounded-xl shadow-2xl w-full image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/600x400/333333/FFFFFF?text=Velora+Vision';">
                     </div>
                 </div>
             </div>
@@ -340,36 +459,36 @@
     </main>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-[#0e1723] py-16">
-        <div class="container mx-auto px-6 sm:px-12">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12">
+    <footer id="contact" class="bg-[#0e1723] py-12 sm:py-16">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-12">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
                 <!-- About -->
-                <div class="md:col-span-2">
-                    <a href="#">
-                       <img src="logo.png" alt="Velora Group Logo" class="h-16 mb-4" onerror="this.onerror=null;this.src='https://placehold.co/240x64/0e1723/FFFFFF?text=Velora+Group';">
+                <div class="sm:col-span-2 lg:col-span-2">
+                    <a href="#" class="inline-block mb-4">
+                       <img src="logo.png" alt="Velora Group Logo" class="h-12 sm:h-16" onerror="this.onerror=null;this.src='https://placehold.co/240x64/0e1723/FFFFFF?text=Velora+Group';">
                     </a>
-                    <p class="text-gray-500 max-w-md">Velora Group is an Edmonton-based homebuilder focused on producing top-quality, immersive homes for Edmonton & surrounding areas.</p>
+                    <p class="text-gray-500 max-w-md text-sm sm:text-base leading-relaxed">Velora Group is an Edmonton-based homebuilder focused on producing top-quality, immersive homes for Edmonton & surrounding areas.</p>
                 </div>
 
                 <!-- Contact -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Contact us</h4>
-                    <ul class="space-y-2 text-gray-400">
-                        <li><a href="tel:+15875550199" class="hover:text-white transition-colors">(587) 555-0199</a></li>
-                        <li><p>Edmonton, Alberta</p></li>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Contact us</h4>
+                    <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                        <li><a href="tel:+15875550199" class="hover:text-white transition-colors inline-block py-1">(587) 555-0199</a></li>
+                        <li><p class="py-1">Edmonton, Alberta</p></li>
                     </ul>
                 </div>
 
                 <!-- Connect -->
                 <div>
-                    <h4 class="font-bold text-white mb-4">Connect with us</h4>
-                     <ul class="space-y-2 text-gray-400">
-                        <li><a href="https://www.instagram.com" target="_blank" class="hover:text-white transition-colors">Instagram</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors">Career</a></li>
+                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Connect with us</h4>
+                     <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
+                        <li><a href="https://www.instagram.com" target="_blank" class="hover:text-white transition-colors inline-block py-1">Instagram</a></li>
+                        <li><a href="#" class="hover:text-white transition-colors inline-block py-1">Career</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-12 border-t border-gray-800 pt-8 text-center text-gray-600 text-sm">
+            <div class="mt-8 sm:mt-12 border-t border-gray-800 pt-6 sm:pt-8 text-center text-gray-600 text-xs sm:text-sm">
                 <p>&copy; 2025 Velora Group. All Rights Reserved.</p>
             </div>
         </div>
