@@ -14,6 +14,12 @@
             background-color: #0e1723;
             color: #E5E5E5;
             overflow-x: hidden;
+            max-width: 100vw;
+        }
+        
+        html {
+            overflow-x: hidden;
+            max-width: 100vw;
         }
         .bg-hero {
             background-image: url('photo1.png');
@@ -359,10 +365,21 @@
             .container {
                 padding-left: 1rem;
                 padding-right: 1rem;
+                max-width: 100%;
             }
             section {
                 padding-top: 3rem !important;
                 padding-bottom: 3rem !important;
+            }
+            
+            /* Prevent any potential horizontal overflow */
+            * {
+                max-width: 100%;
+                box-sizing: border-box;
+            }
+            
+            .hero-card {
+                max-width: calc(100vw - 2rem) !important;
             }
         }
     </style>
@@ -420,10 +437,10 @@
         </div>
 
         <!-- Hero Content -->
-        <div class="relative z-20 flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-12 py-8 w-full">
+        <div class="relative z-20 flex-grow flex items-center justify-center px-4 sm:px-6 lg:px-12 py-8 w-full max-w-full">
             <div class="container mx-auto max-w-full">
-                <div id="hero-card" class="bg-[#0e1723]/80 p-6 sm:p-8 md:p-12 rounded-xl max-w-lg sm:max-w-xl backdrop-blur-none hero-card hero-eclipse mx-auto sm:mx-0 w-full">
-                    <h2 class="text-sm sm:text-sm font-semibold uppercase tracking-normal sm:tracking-widest text-gray-300 mb-3 sm:mb-2">Featured Project</h2>
+                <div id="hero-card" class="bg-[#0e1723]/80 p-6 sm:p-8 md:p-12 rounded-xl max-w-lg sm:max-w-xl backdrop-blur-none hero-card hero-eclipse mx-auto sm:mx-0 w-full max-w-full">
+                    <h2 class="text-xs sm:text-sm font-medium sm:font-semibold uppercase tracking-tight sm:tracking-widest text-gray-300 mb-3 sm:mb-2 leading-tight">Featured Project</h2>
                     <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 leading-tight">Austin House</h1>
                     <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">Take a look at our most recent project, located in the heart of Edmonton at 9928 89 Avenue, Edmonton, AB.</p>
                     <a href="#about" class="btn-transition hover:bg-[#d4b366]">Learn More</a>
@@ -457,17 +474,17 @@
         <section id="about" class="py-12 sm:py-16 lg:py-20 section-fade-in">
             <div class="container mx-auto px-4 sm:px-6 lg:px-12">
                 <div class="relative flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-0">
-                    <!-- Image Container -->
-                    <div class="w-full lg:w-3/5 order-1 lg:order-2 relative">
-                        <img src="photo2.png" alt="Modern living room" class="rounded-xl shadow-2xl w-full h-[400px] sm:h-[500px] lg:h-[600px] object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/800x600/333333/FFFFFF?text=Velora+Vision';">
+                    <!-- Image Container - positioned more to the right -->
+                    <div class="w-full lg:w-4/5 order-1 lg:order-2 lg:ml-auto relative">
+                        <img src="photo2.png" alt="Modern living room" class="rounded-xl shadow-2xl w-full h-[400px] sm:h-[500px] lg:h-[500px] object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/800x600/333333/FFFFFF?text=Velora+Vision';">
                     </div>
                     
-                    <!-- Overlapping Text Card -->
+                    <!-- Overlapping Text Card - smaller and more overlap -->
                     <div class="w-full lg:w-2/5 order-2 lg:order-1 lg:absolute lg:left-0 lg:top-1/2 lg:transform lg:-translate-y-1/2 lg:z-10">
-                         <div class="bg-[#0e1723]/95 p-8 sm:p-10 lg:p-12 rounded-xl eclipse-glow vision-overlap-eclipse lg:mr-8 backdrop-blur-sm">
-                            <h2 class="text-2xl sm:text-3xl lg:text-4xl font-bold text-white mb-4 sm:mb-6">The Velora Vision.</h2>
-                            <p class="text-gray-300 leading-relaxed mb-4 sm:mb-5 text-sm sm:text-base">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
-                             <p class="text-gray-300 leading-relaxed mb-6 sm:mb-8 text-sm sm:text-base">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
+                         <div class="bg-[#0e1723]/95 p-6 sm:p-7 lg:p-8 rounded-xl eclipse-glow vision-overlap-eclipse lg:mr-16 backdrop-blur-sm lg:max-w-md">
+                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">The Velora Vision.</h2>
+                            <p class="text-gray-300 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-sm">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
+                             <p class="text-gray-300 leading-relaxed mb-5 sm:mb-6 text-sm sm:text-sm">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
                             <a href="#contact" class="btn-transition hover:bg-[#d4b366]">Explore</a>
                         </div>
                     </div>
