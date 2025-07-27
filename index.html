@@ -1,660 +1,411 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" class="scroll-smooth">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Velora Group</title>
+    <title>Velora Group | Edmonton Property Developer</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
-        * {
-            box-sizing: border-box;
-        }
-        
         body {
             font-family: 'Inter', sans-serif;
-            background-color: #0e1723;
-            color: #E5E5E5;
-            overflow-x: hidden;
-            margin: 0;
-            padding: 0;
-            width: 100%;
-        }
-        
-        html {
-            overflow-x: hidden;
-            width: 100%;
-        }
-        
-        .bg-hero {
-            background-image: url('photo1.png');
-            background-size: cover;
-            background-position: center;
-            background-attachment: fixed;
-            will-change: transform; 
-            transition: transform 0.2s ease-out;
-            position: relative; /* Ensure positioning context for pseudo-element */
+            background-color: #ffffff;
+            color: #374151;
         }
 
-        /* FIX: Added a pseudo-element for the overlay */
-        /* This combines the background and overlay into one unit to prevent loading flicker. */
-        .bg-hero::before {
-            content: '';
-            position: absolute;
-            inset: 0; /* Covers the entire parent element */
-            background-color: rgb(14 23 35 / 0.7); /* This is the same as bg-[#0e1723]/70 */
+        .accent-red {
+            color: #B91C1C;
+        }
+        .bg-accent-red {
+            background-color: #B91C1C;
+        }
+        .border-accent-red {
+            border-color: #B91C1C;
         }
         
-        @media (max-width: 768px) {
-            .bg-hero {
-                background-attachment: scroll;
-            }
-        }
-        
-        .card-glow {
-            box-shadow: 0 0 15px rgba(255, 255, 255, 0.05), 0 0 30px rgba(255, 255, 255, 0.03);
-        }
-        
-        .eclipse-glow {
-            position: relative;
-            box-shadow: 
-                0 8px 25px rgba(199, 162, 80, 0.3),
-                0 15px 40px rgba(199, 162, 80, 0.2),
-                0 25px 60px rgba(199, 162, 80, 0.1),
-                inset 0 -2px 8px rgba(199, 162, 80, 0.15);
-        }
-        
-        .eclipse-glow::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110%;
-            height: 25px;
-            background: radial-gradient(ellipse at center, 
-                rgba(199, 162, 80, 0.4) 0%, 
-                rgba(199, 162, 80, 0.2) 30%, 
-                rgba(199, 162, 80, 0.1) 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(6px);
-        }
-        
-        .hero-eclipse {
-            box-shadow: 
-                0 12px 30px rgba(199, 162, 80, 0.4),
-                0 20px 50px rgba(199, 162, 80, 0.25),
-                0 30px 70px rgba(199, 162, 80, 0.15),
-                inset 0 -2px 10px rgba(199, 162, 80, 0.2);
-        }
-        
-        .hero-eclipse::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 120%;
-            height: 35px;
-            background: radial-gradient(ellipse at center, 
-                rgba(199, 162, 80, 0.5) 0%, 
-                rgba(199, 162, 80, 0.3) 30%, 
-                rgba(199, 162, 80, 0.15) 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(8px);
-        }
-        
-        .pillar-eclipse {
-            position: relative;
-            padding: 1.5rem;
-            border-radius: 0.75rem;
-            background: rgba(20, 32, 46, 0.8);
-            margin-bottom: 1rem;
-            box-shadow: 
-                0 8px 20px rgba(199, 162, 80, 0.25),
-                0 15px 35px rgba(199, 162, 80, 0.15),
-                0 25px 50px rgba(199, 162, 80, 0.08),
-                inset 0 -2px 6px rgba(199, 162, 80, 0.12);
-        }
-        
-        .pillar-eclipse::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 105%;
-            height: 25px;
-            background: radial-gradient(ellipse at center, 
-                rgba(199, 162, 80, 0.35) 0%, 
-                rgba(199, 162, 80, 0.2) 35%, 
-                rgba(199, 162, 80, 0.08) 65%, 
-                transparent 100%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(4px);
-        }
-        
-        .vision-overlap-eclipse {
-            box-shadow: 
-                0 20px 40px rgba(199, 162, 80, 0.4),
-                0 30px 70px rgba(199, 162, 80, 0.25),
-                0 40px 90px rgba(199, 162, 80, 0.15),
-                inset 0 -3px 12px rgba(199, 162, 80, 0.2);
-        }
-        
-        .vision-overlap-eclipse::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 130%;
-            height: 50px;
-            background: radial-gradient(ellipse at center, 
-                rgba(199, 162, 80, 0.5) 0%, 
-                rgba(199, 162, 80, 0.3) 30%, 
-                rgba(199, 162, 80, 0.15) 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(12px);
-        }
-        
-        .management-eclipse {
-            position: relative;
-            padding: 2rem 1.5rem;
-            background: rgba(20, 32, 46, 0.6);
-            border-radius: 1rem;
-            box-shadow: 
-                0 12px 25px rgba(199, 162, 80, 0.3),
-                0 20px 45px rgba(199, 162, 80, 0.2),
-                0 30px 60px rgba(199, 162, 80, 0.1),
-                inset 0 -2px 8px rgba(199, 162, 80, 0.15);
-        }
-        
-        .management-eclipse::before {
-            content: '';
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 110%;
-            height: 35px;
-            background: radial-gradient(ellipse at center, 
-                rgba(199, 162, 80, 0.4) 0%, 
-                rgba(199, 162, 80, 0.25) 30%, 
-                rgba(199, 162, 80, 0.12) 60%, 
-                transparent 100%);
-            border-radius: 50%;
-            z-index: -1;
-            filter: blur(8px);
-        }
-        
-        @media (max-width: 1024px) {
-            .vision-overlap-eclipse::before {
-                height: 35px;
-                filter: blur(8px);
-            }
-        }
-        
-        @media (max-width: 768px) {
-            .eclipse-glow::before,
-            .hero-eclipse::before,
-            .pillar-eclipse::before,
-            .management-eclipse::before {
-                height: 20px;
-                filter: blur(4px);
-            }
-            
-            .pillar-eclipse {
-                padding: 1.25rem;
-                margin-bottom: 0.75rem;
-            }
-            
-            .management-eclipse {
-                padding: 1.5rem 1rem;
-            }
-            
-            .hero-eclipse {
-                box-shadow: 
-                    0 8px 20px rgba(199, 162, 80, 0.35),
-                    0 15px 35px rgba(199, 162, 80, 0.2),
-                    0 20px 50px rgba(199, 162, 80, 0.12),
-                    inset 0 -1px 6px rgba(199, 162, 80, 0.15);
-            }
-            
-            h1 {
-                font-size: 2.5rem !important;
-                line-height: 1.2;
-            }
-            h2 {
-                font-size: 2rem !important;
-                line-height: 1.3;
-            }
-            h3 {
-                font-size: 1.5rem !important;
-                line-height: 1.4;
-            }
-            p {
-                font-size: 16px;
-                line-height: 1.6;
-            }
-        }
-        
-        .btn-transition {
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            box-shadow: 0 4px 15px rgba(199, 162, 80, 0.3);
-            min-height: 48px;
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            background-color: #c7a250;
-            color: white;
-            font-size: 18px;
-            font-weight: 700;
-            padding: 16px 32px;
-            border-radius: 8px;
-            text-decoration: none;
-        }
-        .btn-transition:hover {
-            transform: translateY(-2px);
-            box-shadow: 
-                0 8px 30px rgba(199, 162, 80, 0.4),
-                0 6px 25px rgba(199, 162, 80, 0.3);
-            background-color: #d4b366;
-        }
-        
-        @media (max-width: 768px) {
-            .btn-transition {
-                padding: 14px 28px;
-                font-size: 16px;
-                min-height: 52px;
-                width: 100%;
-                max-width: 220px;
-            }
-            .btn-transition:hover {
-                transform: translateY(-1px);
-            }
-        }
-        
-        .nav-link {
-            transition: color 0.3s ease;
-            position: relative;
-            min-height: 44px;
-            display: flex;
-            align-items: center;
-        }
-        .nav-link:hover {
-            color: #FFFFFF;
-        }
-        .nav-link::after {
-            content: '';
-            position: absolute;
-            width: 0;
-            height: 2px;
-            bottom: -4px;
-            left: 50%;
-            transform: translateX(-50%);
-            background-color: #c7a250;
-            transition: width 0.3s ease;
-        }
-        .nav-link:hover::after {
-            width: 100%;
-        }
-        
-        @media (max-width: 768px) {
-            .nav-link {
-                padding: 12px 0;
-                font-size: 18px;
-                min-height: 48px;
-            }
-        }
-        
-        .section-fade-in {
+        .fade-in-section {
             opacity: 0;
-            transform: translateY(20px);
+            transform: translateY(30px);
             transition: opacity 0.8s ease-out, transform 0.8s ease-out;
         }
-        .section-fade-in.visible {
+
+        .fade-in-section.is-visible {
             opacity: 1;
             transform: translateY(0);
         }
         
-        .hero-card {
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.4s ease-out;
+        .btn {
+            display: inline-block;
+            padding: 0.75rem 1.75rem;
+            border-radius: 0.375rem;
+            font-weight: 600;
+            text-align: center;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            border: 2px solid transparent;
         }
-        .hero-card:hover {
-            transform: translateY(-8px);
-            box-shadow: 
-                0 20px 40px rgba(199, 162, 80, 0.4),
-                0 30px 60px rgba(199, 162, 80, 0.3),
-                0 40px 80px rgba(199, 162, 80, 0.2);
+        .btn-primary {
+            background-color: #B91C1C;
+            color: #ffffff;
         }
-        
-        @media (max-width: 768px) {
-            .hero-card:hover {
-                transform: translateY(-4px);
-                box-shadow: 
-                    0 12px 25px rgba(199, 162, 80, 0.35),
-                    0 20px 40px rgba(199, 162, 80, 0.25),
-                    0 30px 60px rgba(199, 162, 80, 0.15);
-            }
+        .btn-primary:hover {
+            background-color: #991B1B;
+            transform: translateY(-1px);
         }
-        
-        .image-eclipse {
-            transition: transform 0.5s ease, box-shadow 0.5s ease;
+        .btn-outline {
+            background-color: transparent;
+            color: #B91C1C;
+            border-color: #B91C1C;
         }
-        
-        .image-eclipse:hover {
-            transform: scale(1.03);
-            box-shadow: 
-                0 12px 25px rgba(199, 162, 80, 0.3),
-                0 20px 45px rgba(199, 162, 80, 0.2);
+        .btn-outline:hover {
+            background-color: #B91C1C;
+            color: #ffffff;
         }
         
-        @media (max-width: 768px) {
-            .image-eclipse:hover {
-                transform: scale(1.02);
-                box-shadow: 
-                    0 8px 20px rgba(199, 162, 80, 0.25),
-                    0 15px 35px rgba(199, 162, 80, 0.15);
-            }
-        }
-        
-        /* Container improvements for mobile */
-        .container {
-            width: 100%;
-            margin-left: auto;
-            margin-right: auto;
-            padding-left: 1rem;
-            padding-right: 1rem;
-        }
-        
-        @media (min-width: 640px) {
-            .container {
-                max-width: 640px;
-                padding-left: 1.5rem;
-                padding-right: 1.5rem;
-            }
-        }
-        
-        @media (min-width: 768px) {
-            .container {
-                max-width: 768px;
-            }
-        }
-        
-        @media (min-width: 1024px) {
-            .container {
-                max-width: 1024px;
-                padding-left: 3rem;
-                padding-right: 3rem;
-            }
-        }
-        
-        @media (min-width: 1280px) {
-            .container {
-                max-width: 1280px;
-            }
-        }
-        
-        @media (min-width: 1536px) {
-            .container {
-                max-width: 1536px;
-            }
-        }
-        
-        /* Ensure no horizontal overflow */
-        section {
-            width: 100%;
-            overflow-x: hidden;
-        }
-        
-        @media (max-width: 768px) {
-            section {
-                padding-top: 3rem !important;
-                padding-bottom: 3rem !important;
-            }
+        .header-scrolled {
+            box-shadow: 0 4px 6px -1px rgb(0 0 0 / 0.1), 0 2px 4px -2px rgb(0 0 0 / 0.1);
         }
     </style>
 </head>
-<body>
+<body class="antialiased">
 
-    <!-- Header & Hero Section -->
-    <header id="main-header" class="relative min-h-screen flex flex-col">
-        <!-- Background Image with Overlay -->
-        <!-- FIX: Removed the separate overlay div and applied it via CSS pseudo-element to bg-hero -->
-        <div class="absolute inset-0 bg-hero z-0"></div>
-
-        <!-- Navigation -->
-        <nav class="relative z-20 w-full py-4 sm:py-6">
-            <div class="container mx-auto flex flex-col items-center gap-4 sm:gap-6">
+    <!-- Header -->
+    <header id="header" class="fixed top-0 left-0 right-0 z-50 bg-white transition-shadow duration-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-20">
                 <!-- Logo -->
                 <a href="#" class="flex-shrink-0">
-                    <img src="logo.png" alt="Velora Group Logo" class="h-12 sm:h-16 lg:h-20" onerror="this.onerror=null;this.src='https://placehold.co/240x80/0e1723/FFFFFF?text=Velora+Group';">
+                    <img class="h-12 w-auto" src="logo.png" alt="Velora Group Logo">
                 </a>
-
-                <!-- Desktop Menu -->
-                <div class="hidden md:flex items-center space-x-6 lg:space-x-8">
-                    <a href="#investor" class="text-gray-300 nav-link text-sm lg:text-base">Investor</a>
-                    <a href="#about" class="text-gray-300 nav-link text-sm lg:text-base">About</a>
-                    <a href="#contact" class="text-gray-300 nav-link text-sm lg:text-base">Contact</a>
-                    <a href="#management" class="text-gray-300 nav-link text-sm lg:text-base">Management</a>
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-8">
+                    <a href="#investor" class="text-gray-600 hover:accent-red transition-colors duration-200 font-medium">Investor</a>
+                    <a href="#about" class="text-gray-600 hover:accent-red transition-colors duration-200 font-medium">About</a>
+                    <a href="#management" class="text-gray-600 hover:accent-red transition-colors duration-200 font-medium">Management</a>
+                    <a href="#contact" class="text-gray-600 hover:accent-red transition-colors duration-200 font-medium">Contact</a>
+                </nav>
+                <!-- Mobile Menu Button -->
+                <div class="md:hidden">
+                    <button id="mobile-menu-button" class="text-gray-700 hover:accent-red focus:outline-none">
+                        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path>
+                        </svg>
+                    </button>
                 </div>
             </div>
-            
-            <!-- Social Icon & Mobile Menu Button -->
-            <div class="absolute top-4 sm:top-6 right-4 sm:right-6 flex items-center gap-3 sm:gap-4">
-                 <a href="https://www.instagram.com" target="_blank" class="hidden sm:block text-gray-300 hover:text-white transition-colors p-2">
-                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                </a>
-                <button id="mobile-menu-button" class="md:hidden text-gray-300 focus:outline-none p-2">
-                    <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7"></path></svg>
-                </button>
-            </div>
-        </nav>
-        
-        <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden fixed top-0 left-0 w-full h-screen bg-[#0e1723]/95 z-30 flex flex-col items-center justify-center space-y-6 sm:space-y-8">
-             <button id="close-mobile-menu" class="absolute top-6 sm:top-8 right-6 sm:right-8 text-gray-300 focus:outline-none p-2">
-                <svg class="w-6 h-6 sm:w-8 sm:h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
-            </button>
-            <a href="#investor" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Investor</a>
-            <a href="#about" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">About</a>
-            <a href="#contact" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Contact</a>
-            <a href="#management" class="text-gray-300 text-xl sm:text-2xl nav-link mobile-nav-link">Management</a>
-            <!-- Mobile Instagram Link -->
-            <a href="https://www.instagram.com" target="_blank" class="text-gray-300 hover:text-white transition-colors mt-4 flex items-center gap-2">
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                <span class="text-lg">Instagram</span>
-            </a>
         </div>
-
-        <!-- Hero Content -->
-        <div class="relative z-20 flex-grow flex items-center justify-center py-8 w-full">
-            <div class="container mx-auto">
-                <div id="hero-card" class="bg-[#0e1723]/80 p-6 sm:p-8 md:p-12 rounded-xl max-w-lg sm:max-w-xl backdrop-blur-none hero-card hero-eclipse mx-auto sm:mx-0 w-full">
-                    <h2 class="text-xs sm:text-sm font-medium sm:font-semibold uppercase tracking-tight sm:tracking-widest text-gray-300 mb-3 sm:mb-2 leading-tight">Featured Project</h2>
-                    <h1 class="text-3xl sm:text-4xl md:text-5xl font-bold text-white mt-2 mb-4 leading-tight">Austin House</h1>
-                    <p class="text-gray-300 leading-relaxed mb-6 text-sm sm:text-base">Take a look at our most recent project, located in the heart of Edmonton at 9928 89 Avenue, Edmonton, AB.</p>
-                    <a href="learn.html" class="btn-transition hover:bg-[#d4b366]">Learn More</a>
-                </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-gray-200">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#investor" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-700">Investor</a>
+                <a href="#about" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-700">About</a>
+                <a href="#management" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-700">Management</a>
+                <a href="#contact" class="block px-3 py-2 rounded-md text-base font-medium text-gray-700 hover:text-white hover:bg-red-700">Contact</a>
             </div>
         </div>
     </header>
 
     <main>
-        <!-- Pillars Section -->
-        <section class="bg-[#14202e] py-12 sm:py-16 lg:py-20 section-fade-in">
-            <div class="container mx-auto">
-                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 sm:gap-8 lg:gap-12 text-center">
-                    <div class="pillar-eclipse">
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Invest</h3>
-                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Optimized for modern living, our properties are guaranteed to effortlessly integrate themselves into your daily life and investment portfolio.</p>
+        <!-- Hero Section -->
+        <section id="investor" class="pt-20">
+            <div class="flex flex-col md:grid md:grid-cols-7 h-[400px] md:h-[500px] lg:h-[600px] relative">
+                <!-- Left Content Block - Much Smaller (2 columns) -->
+                <div class="bg-accent-red md:col-span-2 flex items-start min-h-[300px] md:min-h-0">
+                    <div class="p-6 md:p-6 lg:p-8 text-white fade-in-section w-full">
+                        <span class="inline-block py-1 px-3 bg-red-800/50 text-xs font-semibold uppercase rounded-full">
+                            FEATURED PROJECT
+                        </span>
+                        <h1 class="text-2xl md:text-3xl lg:text-4xl font-bold mt-4 mb-4 leading-tight">AUSTIN HOUSE</h1>
+                        <p class="text-sm md:text-sm lg:text-base text-red-100 mb-6 leading-relaxed">
+                            An Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. Located at 9928 89 Avenue, Edmonton, AB.
+                        </p>
+                        
+                        <!-- Achievement Cards - Extended to bridge into photo area -->
+                        <div class="space-y-3 md:space-y-4 w-full">
+                            <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg w-full md:w-[280px] lg:w-[320px]">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-red-700 rounded-full flex items-center justify-center">
+                                        <span class="text-sm md:text-lg font-bold text-white">✓</span>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="font-bold text-xs md:text-sm text-gray-800">Optimized for Modern Living</p>
+                                        <p class="text-xs text-gray-600">Guaranteed to effortlessly integrate into your daily life</p>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="bg-white p-3 md:p-4 rounded-lg shadow-lg w-full md:w-[280px] lg:w-[320px]">
+                                <div class="flex items-center">
+                                    <div class="flex-shrink-0 w-8 h-8 md:w-10 md:h-10 bg-red-700 rounded-full flex items-center justify-center">
+                                        <span class="text-sm md:text-lg font-bold text-white">★</span>
+                                    </div>
+                                    <div class="ml-3">
+                                        <p class="font-bold text-xs md:text-sm text-gray-800">Award-Garde Design</p>
+                                        <p class="text-xs text-gray-600">Creating timeless masterpieces of architecture</p>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </div>
-                    <div class="pillar-eclipse">
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Innovate</h3>
-                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">Cutting-edge and award-garde, we pride ourselves on paving the way for others and creating timeless masterpieces of architecture.</p>
+                </div>
+                <!-- Right Image Block - Much Larger (5 columns) -->
+                <div class="md:col-span-5 h-full bg-cover bg-center" style="background-image: url('photo1.png');">
+                </div>
+            </div>
+        </section>
+
+        <!-- About Section -->
+        <section id="about" class="py-12 md:py-16 lg:py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start">
+                    <div class="fade-in-section">
+                        <h2 class="text-xs md:text-sm font-semibold uppercase tracking-wider accent-red mb-3 md:mb-4">WHO WE ARE</h2>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">FULL-SERVICE REAL ESTATE DEVELOPMENT</h3>
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-4 md:mb-6">
+                            Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.
+                        </p>
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed">
+                            Founded by Tosin, our leadership team brings decades of combined experience in real estate development, design, and construction.
+                        </p>
                     </div>
-                    <div class="pillar-eclipse">
-                        <h3 class="text-xl sm:text-2xl font-bold text-white mb-3 sm:mb-4">Inspire</h3>
-                        <p class="text-gray-400 leading-relaxed text-sm sm:text-base">A home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs.</p>
+                    <div class="fade-in-section space-y-6 md:space-y-8">
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2 uppercase tracking-wide">A TRUSTED REAL ESTATE DEVELOPMENT PARTNER</h4>
+                            <p class="text-gray-600 text-xs md:text-sm uppercase tracking-wider">SPECIALIZED IN INSPIRING RESIDENTIAL PROPERTIES ACROSS EDMONTON</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2 uppercase tracking-wide">A HANDS-ON APPROACH TO DESIGN AND CONSTRUCTION</h4>
+                            <p class="text-gray-600 text-xs md:text-sm uppercase tracking-wider">RECOGNIZED LEADERS IN CREATING ABOVE BENCHMARK QUALITY</p>
+                        </div>
+                        <div>
+                            <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2 uppercase tracking-wide">DEDICATED TO EXCELLENCE AND INNOVATION</h4>
+                            <p class="text-gray-600 text-xs md:text-sm uppercase tracking-wider">SETTING NEW BENCHMARKS FOR CRAFTSMANSHIP IN EDMONTON</p>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
 
         <!-- Vision Section -->
-        <section id="about" class="py-12 sm:py-16 lg:py-20 section-fade-in">
-            <div class="container mx-auto">
-                <div class="relative flex flex-col lg:flex-row items-center gap-8 sm:gap-12 lg:gap-0">
-                    <!-- Image Container -->
-                    <div class="w-full lg:w-4/5 order-1 lg:order-2 lg:ml-auto relative">
-                        <img src="photo2.png" alt="Modern living room" class="rounded-xl shadow-2xl w-full h-[400px] sm:h-[500px] lg:h-[500px] object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/800x600/333333/FFFFFF?text=Velora+Vision';">
+        <section id="vision" class="py-12 md:py-16 lg:py-20 bg-white">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-center">
+                    <div class="fade-in-section order-2 lg:order-1">
+                        <img src="photo9.png" alt="The Velora Vision" class="w-full h-64 md:h-80 lg:h-auto object-cover rounded-lg shadow-lg">
                     </div>
-                    
-                    <!-- Overlapping Text Card -->
-                    <div class="w-full lg:w-2/5 order-2 lg:order-1 lg:absolute lg:left-0 lg:top-1/2 lg:transform lg:-translate-y-1/2 lg:z-10">
-                         <div class="bg-[#0e1723]/95 p-6 sm:p-7 lg:p-8 rounded-xl eclipse-glow vision-overlap-eclipse lg:mr-16 backdrop-blur-sm lg:max-w-md">
-                            <h2 class="text-xl sm:text-2xl lg:text-3xl font-bold text-white mb-3 sm:mb-4">The Velora Vision.</h2>
-                            <p class="text-gray-300 leading-relaxed mb-3 sm:mb-4 text-sm sm:text-sm">Velora Group is an Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home. We take pride in cultivating designs which express our passion for interior design and fine attention to detail, ensuring every space is special regardless of size or role.</p>
-                             <p class="text-gray-300 leading-relaxed mb-5 sm:mb-6 text-sm sm:text-sm">Founded by Tosin, Velora Group is committed to excellence and innovation in every project.</p>
-                            <a href="explore.html" class="btn-transition hover:bg-[#d4b366]">Explore</a>
+                    <div class="fade-in-section order-1 lg:order-2">
+                        <h2 class="text-xs md:text-sm font-semibold uppercase tracking-wider accent-red mb-3 md:mb-4">THE VELORA VISION</h2>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">INSPIRING SPACES FOR THE EVERYDAY HOME</h3>
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed mb-6 md:mb-8">
+                            We believe that a home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs, seamlessly integrating modern living solutions with innovative architectural design.
+                        </p>
+                        <div class="space-y-4 md:space-y-6">
+                            <div>
+                                <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2">INVEST</h4>
+                                <p class="text-sm md:text-base text-gray-600">Optimized for modern living, our properties are guaranteed to effortlessly integrate themselves into your daily life and investment portfolio.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2">INNOVATE</h4>
+                                <p class="text-sm md:text-base text-gray-600">Cutting-edge and award-garde, we pride ourselves on paving the way for others and creating timeless masterpieces of architecture.</p>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-base md:text-lg text-gray-800 mb-2">INSPIRE</h4>
+                                <p class="text-sm md:text-base text-gray-600">A home should be as unique as the occupants that reside within it. Our homes are built to inspire and satisfy your unique set of needs.</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </section>
-        
-        <!-- Journey Section -->
-        <section class="py-20 sm:py-28 bg-[#14202e] section-fade-in">
-            <div class="container mx-auto">
-                <h2 class="text-3xl md:text-4xl font-bold text-white text-center mb-12">Follow our journey.</h2>
-                <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                    <div class="group overflow-hidden rounded-lg">
-                        <img src="photo3.png" alt="Architectural detail" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+1';">
+
+        <!-- Stats Section -->
+        <section class="py-12 md:py-16 bg-accent-red">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 text-white text-center">
+                    <div class="fade-in-section flex flex-col items-center">
+                        <div class="mb-3 md:mb-4">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"></path>
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">5+</div>
+                        <p class="text-base md:text-lg font-medium text-red-100">Years in Business</p>
                     </div>
-                     <div class="group overflow-hidden rounded-lg">
-                        <img src="photo4.png" alt="Interior design shot" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+2';">
+                    <div class="fade-in-section flex flex-col items-center" style="transition-delay: 150ms;">
+                        <div class="mb-3 md:mb-4">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8c-1.657 0-3 .895-3 2s1.343 2 3 2 3 .895 3 2-1.343 2-3 2m0-8c1.11 0 2.08.402 2.599 1M12 8V7m0 1v8m0 0v1m0-1c-1.11 0-2.08-.402-2.599-1M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">$15+ MILLION</div>
+                        <p class="text-base md:text-lg font-medium text-red-100">Projects Under Development</p>
                     </div>
-                     <div class="group overflow-hidden rounded-lg">
-                        <img src="photo5.png" alt="Exterior home view" class="w-full h-full object-cover image-eclipse" onerror="this.onerror=null;this.src='https://placehold.co/400x400/333333/FFFFFF?text=Journey+3';">
+                    <div class="fade-in-section flex flex-col items-center" style="transition-delay: 300ms;">
+                        <div class="mb-3 md:mb-4">
+                            <svg class="w-10 h-10 md:w-12 md:h-12 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 20h5v-2a3 3 0 00-5.356-1.857M17 20H7m10 0v-2c0-.656-.126-1.283-.356-1.857M7 20H2v-2a3 3 0 015.356-1.857M7 20v-2c0-.656.126-1.283.356-1.857m0 0a5.002 5.002 0 019.288 0M15 7a3 3 0 11-6 0 3 3 0 016 0zm6 3a2 2 0 11-4 0 2 2 0 014 0zM7 10a2 2 0 11-4 0 2 2 0 014 0z"></path>
+                            </svg>
+                        </div>
+                        <div class="text-3xl md:text-4xl lg:text-5xl font-bold mb-2">50+</div>
+                        <p class="text-base md:text-lg font-medium text-red-100">Happy Homeowners</p>
                     </div>
                 </div>
+            </div>
+        </section>
+
+        <!-- Portfolio Image Section -->
+        <section class="py-0">
+            <div class="w-full h-48 md:h-64 lg:h-80 xl:h-96">
+                <img src="photo8.png" alt="Modern residential development" class="w-full h-full object-cover">
             </div>
         </section>
 
         <!-- Management Section -->
-        <section id="management" class="py-20 sm:py-28 section-fade-in">
-            <div class="container mx-auto">
-                <div class="management-eclipse text-center">
-                    <h2 class="text-3xl md:text-4xl font-bold text-white mb-6">Management</h2>
-                    <p class="max-w-3xl mx-auto text-gray-400 leading-relaxed mb-12">Our leadership team, guided by founder Tosin, brings decades of combined experience in real estate development, design, and construction. We are dedicated to delivering projects that not only meet but exceed expectations, setting new benchmarks for quality and craftsmanship in Edmonton.</p>
+        <section id="management" class="py-12 md:py-16 lg:py-20 bg-gray-50">
+            <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 lg:gap-16 items-start mb-12 md:mb-16">
+                    <div class="fade-in-section">
+                        <h2 class="text-xs md:text-sm font-semibold uppercase tracking-wider accent-red mb-3 md:mb-4">MANAGEMENT</h2>
+                        <h3 class="text-2xl md:text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 mb-4 md:mb-6 leading-tight">LOCALLY FOCUSED RESIDENTIAL PORTFOLIO</h3>
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed">
+                            Our team designs and constructs a diverse portfolio of residential properties across Edmonton. We provide high-quality homes that are aligned with Canadian urban lifestyles, our residential property development team ensures these homes are made to value and contribute to our overall investment strategy.
+                        </p>
+                    </div>
+                    <div class="fade-in-section">
+                        <p class="text-base md:text-lg text-gray-600 leading-relaxed">
+                            Velora Group is respected for our active role within each of the communities we are in, we operate, and for the continuous improvement approach to the properties under our care. We seek to benefit internal and external stakeholders alike by closely monitoring and managing asset performance in our relentless pursuit of client satisfaction.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- CTA Section -->
+                <div class="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 items-center">
+                    <div class="fade-in-section order-2 lg:order-1">
+                        <img src="photo6.png" alt="Austin House Development" class="w-full h-64 md:h-80 object-cover rounded-lg shadow-lg">
+                    </div>
+                    <div class="bg-accent-red p-6 md:p-8 lg:p-12 rounded-lg text-white fade-in-section order-1 lg:order-2">
+                        <h3 class="text-xl md:text-2xl lg:text-3xl xl:text-4xl font-bold mb-4 md:mb-6 leading-tight">EDMONTON-FOCUSED: THE AUSTIN HOUSE ADVANTAGE</h3>
+                        <p class="text-red-100 mb-6 md:mb-8 leading-relaxed text-sm md:text-base">
+                            Located in the heart of Edmonton at 9928 89 Avenue, Austin House represents our commitment to quality residential development and modern living solutions.
+                        </p>
+                        <a href="#contact" class="inline-block bg-white text-red-700 font-bold px-6 md:px-8 py-2 md:py-3 rounded hover:bg-gray-100 transition-colors text-sm md:text-base">
+                            DISCOVER AUSTIN HOUSE
+                        </a>
+                    </div>
                 </div>
             </div>
         </section>
-
     </main>
 
     <!-- Footer -->
-    <footer id="contact" class="bg-[#0e1723] py-12 sm:py-16">
-        <div class="container mx-auto">
-            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8 sm:gap-12">
-                <!-- About -->
-                <div class="sm:col-span-2 lg:col-span-2">
-                    <a href="#" class="inline-block mb-4">
-                       <img src="logo.png" alt="Velora Group Logo" class="h-12 sm:h-16" onerror="this.onerror=null;this.src='https://placehold.co/240x64/0e1723/FFFFFF?text=Velora+Group';">
-                    </a>
-                    <p class="text-gray-500 max-w-md text-sm sm:text-base leading-relaxed">Velora Group is an Edmonton-based homebuilder focused on producing top-quality, immersive homes for Edmonton & surrounding areas.</p>
+    <footer id="contact" class="bg-gray-900 text-gray-300">
+        <div class="container mx-auto px-4 sm:px-6 lg:px-8 py-16">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                <div class="md:col-span-2">
+                    <img class="h-12 w-auto mb-6" src="logo.png" alt="Velora Group Logo">
+                    <p class="text-gray-400 max-w-md">
+                        An Edmonton-based property developer concentrated on providing inspiring spaces for the everyday home.
+                    </p>
                 </div>
-
-                <!-- Contact -->
                 <div>
-                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Contact us</h4>
-                    <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
-                        <li><a href="tel:+15875550199" class="hover:text-white transition-colors inline-block py-1">(587) 555-0199</a></li>
-                        <li><p class="py-1">Edmonton, Alberta</p></li>
+                    <h3 class="font-semibold text-white uppercase tracking-wider mb-4">QUICK LINKS</h3>
+                    <ul class="space-y-2">
+                        <li><a href="#about" class="text-gray-400 hover:text-white transition-colors">About</a></li>
+                        <li><a href="#vision" class="text-gray-400 hover:text-white transition-colors">Vision</a></li>
+                        <li><a href="#management" class="text-gray-400 hover:text-white transition-colors">Management</a></li>
+                        <li><a href="#contact" class="text-gray-400 hover:text-white transition-colors">Contact</a></li>
                     </ul>
                 </div>
-
-                <!-- Connect -->
                 <div>
-                    <h4 class="font-bold text-white mb-3 sm:mb-4 text-sm sm:text-base">Connect with us</h4>
-                     <ul class="space-y-2 text-gray-400 text-sm sm:text-base">
-                        <li><a href="https://www.instagram.com" target="_blank" class="hover:text-white transition-colors inline-block py-1">Instagram</a></li>
-                        <li><a href="#" class="hover:text-white transition-colors inline-block py-1">Career</a></li>
+                    <h3 class="font-semibold text-white uppercase tracking-wider mb-4">CONTACT</h3>
+                    <ul class="space-y-2 text-gray-400">
+                        <li>Edmonton, Alberta</li>
+                        <li><a href="tel:+15875550199" class="hover:text-white transition-colors">(587) 555-0199</a></li>
+                        <li><a href="mailto:info@veloragroup.com" class="hover:text-white transition-colors">info@veloragroup.com</a></li>
                     </ul>
                 </div>
             </div>
-            <div class="mt-8 sm:mt-12 border-t border-gray-800 pt-6 sm:pt-8 text-center text-gray-600 text-xs sm:text-sm">
-                <p>&copy; 2025 Velora Group. All Rights Reserved.</p>
-                <p class="mt-2">
-                    <a href="https://www.instagram.com/mrwopara" target="_blank" class="hover:text-gray-400 transition-colors">
-                        website by chim
-                    </a>
-                </p>
+            <div class="mt-12 border-t border-gray-700 pt-8">
+                <div class="flex flex-col md:flex-row justify-between items-center text-gray-500 text-sm">
+                    <p>&copy; 2025 Velora Group. All Rights Reserved.</p>
+                    <div class="mt-4 md:mt-0 flex space-x-6">
+                        <a href="#" class="hover:text-gray-300 transition-colors">Privacy Policy</a>
+                        <a href="#" class="hover:text-gray-300 transition-colors">Terms of Service</a>
+                        <a href="https://www.instagram.com/mrwopara" target="_blank" class="hover:text-gray-300 transition-colors">
+                            Website by chim
+                        </a>
+                    </div>
+                </div>
             </div>
         </div>
     </footer>
 
     <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            // Mobile Menu Toggle
+        document.addEventListener('DOMContentLoaded', function() {
+            // Mobile menu toggle
             const mobileMenuButton = document.getElementById('mobile-menu-button');
-            const closeMobileMenuButton = document.getElementById('close-mobile-menu');
             const mobileMenu = document.getElementById('mobile-menu');
-            const mobileNavLinks = document.querySelectorAll('.mobile-nav-link');
-
-            mobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.remove('hidden');
-                document.body.style.overflow = 'hidden';
-            });
-
-            closeMobileMenuButton.addEventListener('click', () => {
-                mobileMenu.classList.add('hidden');
-                document.body.style.overflow = '';
-            });
-            
-            mobileNavLinks.forEach(link => {
-                link.addEventListener('click', () => {
-                    mobileMenu.classList.add('hidden');
-                    document.body.style.overflow = '';
+            if (mobileMenuButton && mobileMenu) {
+                mobileMenuButton.addEventListener('click', () => {
+                    mobileMenu.classList.toggle('hidden');
                 });
-            });
+            }
+            
+            // Close mobile menu when a link is clicked
+            const mobileMenuLinks = document.querySelectorAll('#mobile-menu a');
+            if (mobileMenuLinks.length > 0 && mobileMenu) {
+                mobileMenuLinks.forEach(link => {
+                    link.addEventListener('click', () => {
+                        mobileMenu.classList.add('hidden');
+                    });
+                });
+            }
 
-            // Scroll Animations for sections
-            const sections = document.querySelectorAll('.section-fade-in');
-            const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => {
-                    if (entry.isIntersecting) {
-                        entry.target.classList.add('visible');
+            // Header shadow on scroll
+            const header = document.getElementById('header');
+            if (header) {
+                window.addEventListener('scroll', () => {
+                    if (window.scrollY > 50) {
+                        header.classList.add('header-scrolled');
+                    } else {
+                        header.classList.remove('header-scrolled');
                     }
                 });
-            }, {
-                threshold: 0.1
-            });
-
-            sections.forEach(section => {
-                observer.observe(section);
-            });
-
-            // Scroll Zoom Effect for Hero Background
-            const heroBg = document.querySelector('.bg-hero');
-            if (heroBg) {
-                window.addEventListener('scroll', () => {
-                    const scrollY = window.scrollY;
-                    const scale = 1 + scrollY / 1500;
-                    const cappedScale = Math.min(scale, 1.5);
-                    heroBg.style.transform = `scale(${cappedScale})`;
-                }, { passive: true });
             }
+
+            // Intersection Observer for fade-in animations
+            const sections = document.querySelectorAll('.fade-in-section');
+            if (sections.length > 0) {
+                const observer = new IntersectionObserver((entries, observer) => {
+                    entries.forEach(entry => {
+                        if (entry.isIntersecting) {
+                            entry.target.classList.add('is-visible');
+                            observer.unobserve(entry.target);
+                        }
+                    });
+                }, {
+                    rootMargin: '0px',
+                    threshold: 0.1
+                });
+
+                sections.forEach(section => {
+                    observer.observe(section);
+                });
+            }
+
+            // Smooth scrolling for navigation links
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function (e) {
+                    e.preventDefault();
+                    const target = document.querySelector(this.getAttribute('href'));
+                    if (target) {
+                        target.scrollIntoView({
+                            behavior: 'smooth',
+                            block: 'start'
+                        });
+                    }
+                });
+            });
         });
     </script>
 
